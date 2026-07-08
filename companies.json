@@ -1,0 +1,137 @@
+[
+  {
+    "ticker": "PCG",
+    "name": "PG&E CORP",
+    "revenue": 24935000000,
+    "assets": 141611000000,
+    "liabilities": 109071000000,
+    "equity": 32540000000,
+    "net_income": 1220000000
+  },
+  {
+    "ticker": "EIX",
+    "name": "EDISON INTERNATIONAL",
+    "revenue": 19317000000,
+    "assets": 94026000000,
+    "liabilities": 74767000000,
+    "equity": 17579000000,
+    "net_income": 4459000000
+  },
+  {
+    "ticker": "SRE",
+    "name": "SEMPRA",
+    "revenue": 13702000000,
+    "assets": 110878000000,
+    "liabilities": 79284000000,
+    "equity": 31594000000,
+    "net_income": 1837000000
+  },
+  {
+    "ticker": "DUK",
+    "name": "DUKE ENERGY CORPORATION",
+    "revenue": 19624000000,
+    "assets": 195736000000,
+    "liabilities": 143894000000,
+    "equity": 51842000000,
+    "net_income": 4968000000
+  },
+  {
+    "ticker": "SO",
+    "name": "SOUTHERN CO",
+    "revenue": 29553000000,
+    "assets": 155720000000,
+    "liabilities": 116853000000,
+    "equity": 36016000000,
+    "net_income": 4341000000
+  },
+  {
+    "ticker": "NEE",
+    "name": "NEXTERA ENERGY, INC.",
+    "revenue": 14256000000,
+    "assets": 212721000000,
+    "liabilities": 146242000000,
+    "equity": 54608000000,
+    "net_income": 6835000000
+  },
+  {
+    "ticker": "D",
+    "name": "DOMINION ENERGY, INC",
+    "revenue": 16506000000,
+    "assets": 115857000000,
+    "liabilities": 82440000000,
+    "equity": 29083000000,
+    "net_income": 2998000000
+  },
+  {
+    "ticker": "AEP",
+    "name": "American Electric Power Company, Inc.",
+    "revenue": 21876000000,
+    "assets": 114460000000,
+    "liabilities": 82204000000,
+    "equity": 31138000000,
+    "net_income": 1480000000
+  },
+  {
+    "ticker": "XEL",
+    "name": "XCEL ENERGY INC",
+    "revenue": 11537000000,
+    "assets": 81371000000,
+    "liabilities": 57762000000,
+    "equity": 23609000000,
+    "net_income": 2018000000
+  },
+  {
+    "ticker": "ED",
+    "name": "CONSOLIDATED EDISON INC",
+    "revenue": 16918000000,
+    "assets": 74603000000,
+    "liabilities": 50413000000,
+    "equity": 24190000000,
+    "net_income": 2023000000
+  },
+  {
+    "ticker": "WEC",
+    "name": "WEC ENERGY GROUP, INC.",
+    "revenue": 9800100000,
+    "assets": 51518300000,
+    "liabilities": 37465500000,
+    "equity": 14052800000,
+    "net_income": 640300000
+  },
+  {
+    "ticker": "ES",
+    "name": "EVERSOURCE ENERGY",
+    "revenue": 13547244000,
+    "assets": 63786711000,
+    "liabilities": 47589440000,
+    "equity": 16197271000,
+    "net_income": -434700000
+  },
+  {
+    "ticker": "PEG",
+    "name": "PUBLIC SERVICE ENTERPRISE GROUP INC",
+    "revenue": 12168000000,
+    "assets": 57576000000,
+    "liabilities": 40594000000,
+    "equity": 16982000000,
+    "net_income": 2111000000
+  },
+  {
+    "ticker": "AEE",
+    "name": "AMEREN CORP",
+    "revenue": 8799000000,
+    "assets": 48476000000,
+    "liabilities": 35075000000,
+    "equity": 13401000000,
+    "net_income": 523000000
+  },
+  {
+    "ticker": "CNP",
+    "name": "CENTERPOINT ENERGY INC",
+    "revenue": 9357000000,
+    "assets": 46534000000,
+    "liabilities": 35381000000,
+    "equity": 11153000000,
+    "net_income": 1052000000
+  }
+]
