@@ -151,7 +151,7 @@ with tab_dash:
 
 with tab_method:
     st.header("Methodology")
-    st.markdown("## How UtilityTracker.ai Works
+    st.markdown("""## How UtilityTracker.ai Works
 
 UtilityTracker.ai evaluates the financial health of 15 major U.S. utility
 companies using data pulled directly from SEC filings, a transparent scoring
@@ -217,4 +217,4 @@ tool is an analytical demonstration, not investment advice.
 
 ---
 *Built with Python, Streamlit, and the Anthropic API. Data: SEC EDGAR, Yahoo
-Finance. Source code: github.com/odin-omega/utility-tracker*")
+Finance. Source code: github.com/odin-omega/utility-tracker*""")
