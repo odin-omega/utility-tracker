@@ -79,69 +79,76 @@ def describe_company(c):
 
 st.title("UtilityTracker.ai")
 
+tab_dash, tab_method = st.tabs(["Dashboard", "Methodology"])
+
+with tab_dash:
 # The dropdown from your sketch. Streamlit rule: every st.something()
 # paints an element on the page, top to bottom, in code order.
-names = [f"{c['ticker']} - {c['name']}" for c in companies]
-choice = st.selectbox("Select company", names)
+    names = [f"{c['ticker']} - {c['name']}" for c in companies]
+    choice = st.selectbox("Select company", names)
 
-ticker = choice.split(" - ")[0]
+    ticker = choice.split(" - ")[0]
 
-# Find the selected company's dict - your find_client() pattern, live
-company = None
-for c in companies:
-    if c["ticker"] == ticker:
-        company = c
-        break
+    # Find the selected company's dict - your find_client() pattern, live
+    company = None
+    for c in companies:
+        if c["ticker"] == ticker:
+            company = c
+            break
 
-st.header(company["name"])
+    st.header(company["name"])
 
-# ---------- METRICS ROW (rank / rating from the sketch) ----------
-col1, col2, col3 = st.columns(3)
-col1.metric("Company Rank", f"#{company['rank']} of {len(companies)}")
-col2.metric("Overall Strength", company["rating"])
-col3.metric("Score", f"{company['score']:.0f}/100" if company["score"] else "-")
+    # ---------- METRICS ROW (rank / rating from the sketch) ----------
+    col1, col2, col3 = st.columns(3)
+    col1.metric("Company Rank", f"#{company['rank']} of {len(companies)}")
+    col2.metric("Overall Strength", company["rating"])
+    col3.metric("Score", f"{company['score']:.0f}/100" if company["score"] else "-")
 
-# ---------- FINANCIALS ----------
-st.subheader("Key Financials")
-col1, col2 = st.columns(2)
+    # ---------- FINANCIALS ----------
+    st.subheader("Key Financials")
+    col1, col2 = st.columns(2)
 
-with col1:
-    if company["revenue"]:
-        st.write(f"**Revenue:** ${company['revenue']:,.0f}")
-    if company["net_income"]:
-        st.write(f"**Net income:** ${company['net_income']:,.0f}")
-    if company["assets"]:
-        st.write(f"**Assets:** ${company['assets']:,.0f}")
+    with col1:
+        if company["revenue"]:
+            st.write(f"**Revenue:** ${company['revenue']:,.0f}")
+        if company["net_income"]:
+            st.write(f"**Net income:** ${company['net_income']:,.0f}")
+        if company["assets"]:
+            st.write(f"**Assets:** ${company['assets']:,.0f}")
 
-with col2:
-    if company["debt_to_equity"] is not None:
-        st.write(f"**Debt-to-equity:** {company['debt_to_equity']:.2f}")
-    if company["net_margin"] is not None:
-        st.write(f"**Net margin:** {company['net_margin']:.1%}")
-    if company["roe"] is not None:
-        st.write(f"**ROE:** {company['roe']:.1%}")
+    with col2:
+        if company["debt_to_equity"] is not None:
+            st.write(f"**Debt-to-equity:** {company['debt_to_equity']:.2f}")
+        if company["net_margin"] is not None:
+            st.write(f"**Net margin:** {company['net_margin']:.1%}")
+        if company["roe"] is not None:
+            st.write(f"**ROE:** {company['roe']:.1%}")
 
-# ---------- STOCK CHART ----------
-st.subheader("Stock Price - 1 Year")
-prices = get_stock_history(ticker)
-if len(prices) > 0:
-    st.line_chart(prices)
-    st.write(f"Latest close: ${prices.iloc[-1]:.2f}")
-else:
-    st.write("No price data available")
+    # ---------- STOCK CHART ----------
+    st.subheader("Stock Price - 1 Year")
+    prices = get_stock_history(ticker)
+    if len(prices) > 0:
+        st.line_chart(prices)
+        st.write(f"Latest close: ${prices.iloc[-1]:.2f}")
+    else:
+        st.write("No price data available")
 
-# ---------- SUMMARY ----------
-st.subheader("Summary")
-analysis = get_ai_analysis(company["ticker"], describe_company(company))
-st.write(analysis["summary"])
+    # ---------- SUMMARY ----------
+    st.subheader("Summary")
+    analysis = get_ai_analysis(company["ticker"], describe_company(company))
+    st.write(analysis["summary"])
 
-st.subheader("Insights")
-col1, col2 = st.columns(2)
-with col1:
-    st.markdown("**Strengths**")
-    for s in analysis["strengths"]:
-        st.write(f"• {s}")
-with col2:
-    st.markdown("**Weaknesses**")
-    for w in analysis["weaknesses"]:
-        st.write(f"• {w}")
+    st.subheader("Insights")
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown("**Strengths**")
+        for s in analysis["strengths"]:
+            st.write(f"• {s}")
+    with col2:
+        st.markdown("**Weaknesses**")
+        for w in analysis["weaknesses"]:
+            st.write(f"• {w}")
+
+with tab_method:
+    st.header("Methodology")
+    st.markdown("Documentation coming shortly.")
