@@ -20,12 +20,25 @@ def load_companies():
 # every click. Same cache idea as companies.json, one level up.
 
 
-@st.cache_data
-def get_stock_history(ticker):
-    """One year of daily closing prices."""
-    stock = yf.Ticker(ticker)
-    hist = stock.history(period="1y")
+@st.cache_data(ttl=3600, show_spinner=False)
+def fetch_stock_history(ticker):
+    """One year of daily closing prices, cached for an hour.
+    Raises if Yahoo returns nothing - Streamlit doesn't cache
+    exceptions, so a failed fetch is retried instead of being
+    remembered forever."""
+    hist = yf.Ticker(ticker).history(period="1y")
+    if hist.empty:
+        raise ValueError(f"no price data for {ticker}")
     return hist["Close"]
+
+
+def get_stock_history(ticker):
+    """Wrapper that never throws: the chart is a nice-to-have,
+    and a Yahoo outage shouldn't take down the rest of the page."""
+    try:
+        return fetch_stock_history(ticker)
+    except Exception:
+        return None
 
 
 companies = load_companies()
@@ -127,11 +140,15 @@ with tab_dash:
     # ---------- STOCK CHART ----------
     st.subheader("Stock Price - 1 Year")
     prices = get_stock_history(ticker)
-    if len(prices) > 0:
+    if prices is not None and len(prices) > 0:
         st.line_chart(prices)
         st.write(f"Latest close: ${prices.iloc[-1]:.2f}")
     else:
-        st.write("No price data available")
+        st.info(
+            "Price chart temporarily unavailable - Yahoo Finance isn't "
+            "responding right now. All financial metrics above come from "
+            "SEC EDGAR and are unaffected."
+        )
 
     # ---------- SUMMARY ----------
     st.subheader("Summary")
